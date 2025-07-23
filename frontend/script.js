@@ -5,6 +5,8 @@ const convertIntoMp3 = async (event) => {
   const loadingElement = document.getElementById("loading");
   const submitBtn = document.getElementById("submit-btn");
 
+  statusElement.style.display = "block";
+
   if (!youtubeUrl) {
     statusElement.textContent = "Please enter a YouTube URL";
     return;
@@ -17,6 +19,8 @@ const convertIntoMp3 = async (event) => {
     statusElement.textContent = "Please enter a valid YouTube URL";
     return;
   }
+
+  statusElement.appendChild(loadingElement);
 
   loadingElement.style.display = "block";
   statusElement.textContent = "Processing...";
@@ -36,24 +40,50 @@ const convertIntoMp3 = async (event) => {
     const container = document.getElementById("resultContainer");
     container.innerHTML = "";
 
+    // Title and Thumbnail wrapper
+    const titleThumbWrapper = document.createElement("div");
+    titleThumbWrapper.className = "title-with-thumbnail";
+
+    // Inner wrapper for text content
+    const textContentWrapper = document.createElement("div");
+    textContentWrapper.className = "video-meta";
+
     const titleEl = document.createElement("h2");
     titleEl.textContent = title;
 
+    const descriptionEl = document.createElement("p");
+    descriptionEl.textContent = info.data.videoDetails.description;
+    descriptionEl.className = "description";
+
+    const channelEl = document.createElement("p");
+    channelEl.innerHTML = `<b>Channel: </b> ${info.data.videoDetails.author.name}`;
+    
     const thumbImg = document.createElement("img");
     thumbImg.src = thumbnail;
     thumbImg.alt = title;
-    thumbImg.style.width = "320px";
 
-    container.appendChild(titleEl);
-    container.appendChild(thumbImg);
+    // Append text content to inner wrapper
+    textContentWrapper.appendChild(channelEl);
+    textContentWrapper.appendChild(titleEl);
+    textContentWrapper.appendChild(descriptionEl);
+
+    // Append image and text wrapper to outer wrapper
+    titleThumbWrapper.appendChild(thumbImg);
+    titleThumbWrapper.appendChild(textContentWrapper);
+
+    container.appendChild(titleThumbWrapper);
+
+    // Downloader wrapper
+    const downloaderWrapper = document.createElement("div");
+    downloaderWrapper.className = "downloader-wrapper";
 
     const filteredFormats = formats.filter(
       (f) => (f.hasAudio && f.hasVideo) || (f.hasAudio && !f.hasVideo)
     );
 
     filteredFormats.forEach((format) => {
-      const formatEl = document.createElement("div");
-      formatEl.style.margin = "10px 0";
+      const downloader = document.createElement("div");
+      downloader.className = "downloader";
 
       const label = document.createElement("span");
       label.textContent = format.hasVideo
@@ -66,12 +96,14 @@ const convertIntoMp3 = async (event) => {
       btn.target = "_blank";
       btn.className = "button";
 
-      formatEl.appendChild(label);
-      formatEl.appendChild(btn);
-      container.appendChild(formatEl);
-
-      statusElement.textContent = "Ready to download.";
+      downloader.appendChild(label);
+      downloader.appendChild(btn);
+      downloaderWrapper.appendChild(downloader);
     });
+
+    // Append all downloaders at once
+    container.appendChild(downloaderWrapper);
+    statusElement.textContent = "Ready to download.";
   } catch (error) {
     console.error("Error:", error);
     statusElement.textContent = "Failed to convert video, Please try again.";

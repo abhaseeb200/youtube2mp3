@@ -1,42 +1,29 @@
+/* ====== GLOBALLY ====== */
 body {
   font-family: "Arial", sans-serif;
   text-align: center;
   margin: 0;
   background-color: #f5f5f5;
 }
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
 h1 {
   color: #fff;
-}
-.subtitle {
-  color: #fff;
-  font-size: 18px;
-}
-.container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  /* background-color: white; */
-  padding: 30px;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 input {
   width: 100%;
   padding: 12px;
   margin: 20px 0;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 55px;
   font-size: 16px;
 }
-.bg-white {
-  background-color: white !important;
-  color: #000;
+input[type="text"] {
+  padding: 20px 30px;
+  transition: 0.4s all;
+}
+input[type="text"]:focus-visible {
+  outline: 1px solid #000000;
+  box-shadow: 0px 0px 20px #ffffff48;
+  padding-right: 165px;
 }
 button,
 .button {
@@ -47,7 +34,7 @@ button,
   border: none;
   padding: 12px 24px;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -55,10 +42,120 @@ button:hover,
 .button:hover {
   background-color: #cc0000;
 }
+.container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ====== HERO SECTION ====== */
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+.subtitle {
+  color: #fff;
+  font-size: 18px;
+  margin-top: -8px !important;
+}
+.wrapper {
+  background: url("https://img.freepik.com/free-photo/pile-3d-play-button-logos_1379-880.jpg?semt=ais_hybrid&w=740");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  padding: 100px;
+  margin: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.overlay {
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#submit-btn {
+  position: absolute;
+  right: 8px;
+  width: fit-content;
+  border-radius: 100px;
+  padding: 14px 32px;
+  background: #000 !important;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  &:hover {
+    background: #ff0000 !important;
+  }
+}
+
+/* ======= GUIDE SECTION ======= */
+.guide {
+  padding: 50px 0;
+}
+.guide-wrapper {
+  display: flex;
+  gap: 10px;
+}
+.guide-ss {
+  width: 100%;
+  border-radius: 12px;
+  height: 209px;
+  object-fit: cover;
+}
+
+/* ====== CONVERT SECTION ====== */
+.video-meta {
+  text-align: left;
+}
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.title-with-thumbnail {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+.title-with-thumbnail h2 {
+  text-align: left;
+}
+.title-with-thumbnail img {
+  width: 100%;
+  max-width: 50%;
+  border-radius: 12px;
+}
+.downloader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 12px;
+  box-shadow: 0 0 20px #00000005;
+}
+
 #status {
-  margin-top: 20px;
+  margin-top: 70px;
   font-weight: bold;
   min-height: 24px;
+  display: none;
 }
 .example {
   margin-top: 30px;
@@ -75,26 +172,8 @@ button:hover,
   height: 30px;
   animation: spin 1s linear infinite;
 }
-.wrapper {
-  background: url("https://img.freepik.com/free-photo/pile-3d-play-button-logos_1379-880.jpg?semt=ais_hybrid&w=740");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-  padding: 50px ;
-}
-.overlay {
-  backdrop-filter:blur(5px);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
+/* ===== ANIMATIONS ===== */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
