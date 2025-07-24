@@ -4,6 +4,8 @@ const ytdl = require("@distube/ytdl-core");
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("ffmpeg-static");
 
+// To used this you need to install the ffmpeg in your system
+// and configure the environment variable
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 const corsOptions = {
