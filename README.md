@@ -2,6 +2,11 @@
 
 A simple web app to convert and download YouTube videos as MP3 or MP4 files.
 
+## Demo
+![qZxQgC](https://github.com/user-attachments/assets/e0c50342-08d9-4a3f-bc6a-4f2e166876b3)
+
+![ddMNfs](https://github.com/user-attachments/assets/6b62bfb4-203a-4760-bb24-34c2f43ef17f)
+
 ## Features
 - Paste a YouTube URL and get video info instantly
 - Download as MP3 (audio) or MP4 (video+audio)
